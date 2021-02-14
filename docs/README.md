@@ -13,6 +13,6 @@
 
 - [Quickstart](quickstart.md)
 - [Installation](installation.md)
-- [Configure](configure.md)
+- [Configuration](configuration.md)
 - [Usage](usage.md)
 - [Deploy](deploy.md)
