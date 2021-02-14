@@ -1,4 +1,4 @@
-export GITHUB_TOKEN
+export GH_TOKEN
 
 OUT_DIR = build
 COMPILED := $(OUT_DIR)/ghgql
