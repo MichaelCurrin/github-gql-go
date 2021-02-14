@@ -41,7 +41,7 @@ func Request() {
 		log.Fatalln(err)
 	}
 
-	fmt.Println(q.Viewer.Login)
-	fmt.Println(q.Viewer.CreatedAt)
-	fmt.Println(q.Viewer.AvatarURL)
+	fmt.Println("Login:", q.Viewer.Login)
+	fmt.Println("Created at:", q.Viewer.CreatedAt)
+	fmt.Println("Avatar URL:", q.Viewer.AvatarURL)
 }
