@@ -1,5 +1,5 @@
 # Go Project Template
-> Scaffolding for a Go app 
+> An easy way to query GitHub's GraphQL API from the command-line
 
 <!-- Badges generated with Badge Generator - https://michaelcurrin.github.io/badge-generator/ -->
 
