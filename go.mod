@@ -1,4 +1,4 @@
-module github.com/MichaelCurrin/go-project-template
+module github.com/MichaelCurrin/github-gql-go
 
 go 1.15
 

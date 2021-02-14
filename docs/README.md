@@ -1,4 +1,4 @@
-# Go Project Template documentation
+# GitHub GraphQL Go documentation
 
 
 ## Features

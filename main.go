@@ -8,7 +8,7 @@ import (
 
 	"github.com/urfave/cli/v2"
 
-	greetings "github.com/MichaelCurrin/go-project-template/internal"
+	greetings "github.com/MichaelCurrin/github-gql-go/internal"
 )
 
 const (

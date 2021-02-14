@@ -33,7 +33,7 @@ $ make global
 Test it:
 
 ```sh
-$ go-project-template -h
+$ github-gql-go -h
 ```
 
 Make sure your `PATH` is setup in `.bashrc` or similar to include the `GOBIN` directory, so your command can be run from anywhere:

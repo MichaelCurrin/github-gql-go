@@ -16,8 +16,8 @@
 ## Clone
 
 ```sh
-$ git clone git@github.com:MichaelCurrin/go-project-template.git
-$ cd go-project-template
+$ git clone git@github.com:MichaelCurrin/github-gql-go.git
+$ cd github-gql-go
 ```
 
 
