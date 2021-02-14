@@ -1,11 +1,15 @@
+export GITHUB_TOKEN
+
 OUT_DIR = build
-COMPILED := $(OUT_DIR)/myapp
+COMPILED := $(OUT_DIR)/ghgql
 
 .PHONY: $(OUT_DIR)
 
+
 default: install
 
-all: install fmt test build
+all: install fmt build
+
 
 h help:
 	@grep '^[a-z]' Makefile
@@ -21,13 +25,9 @@ upgrade:
 fmt:
 	go fmt ./...
 
-test:
-	@echo "TODO Add tests"
-	go test -v ./...
 
 run:
-	go run main.go
-	go run main.go --name Gopher
+	source .env && go run main.go
 
 usage:
 	go run main.go -h
