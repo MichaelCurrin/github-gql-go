@@ -15,11 +15,7 @@ import (
 // TokenName Name of the environment variable for storing the GitHub token.
 const TokenName = "GH_TOKEN"
 
-func oAuth() *http.Client {
-	token := os.Getenv(TokenName)
-	if token == "" {
-		log.Fatal("Must set token on environment variable: ", TokenName)
-	}
+func oAuth(token string) *http.Client {
 	src := oauth2.StaticTokenSource(
 		&oauth2.Token{AccessToken: token},
 	)
@@ -28,7 +24,11 @@ func oAuth() *http.Client {
 }
 
 func apiClient() *githubv4.Client {
-	httpClient := oAuth()
+	token := os.Getenv(TokenName)
+	if token == "" {
+		log.Fatal("Must set token on environment variable: ", TokenName)
+	}
+	httpClient := oAuth(token)
 
 	return githubv4.NewClient(httpClient)
 }
