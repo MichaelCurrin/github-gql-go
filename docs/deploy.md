@@ -12,7 +12,7 @@ $ make build
 Test the build:
 
 ```sh
-$ build/myapp -h
+$ build/ghgql -h
 ```
 
 You can share that binary with others to download and run.
@@ -36,7 +36,7 @@ Test it:
 $ github-gql-go -h
 ```
 
-Make sure your `PATH` is setup in `.bashrc` or similar to include the `GOBIN` directory, so your command can be run from anywhere:
+Make sure your `PATH` is setup in `~/.bashrc` or similar to include the `GOBIN` directory, so your command can be run from anywhere:
 
 ```sh
 export PATH="$PATH:$GOPATH/bin"
