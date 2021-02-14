@@ -13,6 +13,5 @@ $ go install github.com/MichaelCurrin/github-gql-go
 ## Run
 
 ```sh
-$ myapp --name dev
-Hello, dev!
+$ github-gql-go
 ```
