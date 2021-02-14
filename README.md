@@ -12,34 +12,10 @@
 
 ## Sample usage
 
-Default.
-
 ```sh
-$ myapp
+$ export GH_TOKEN=abcdef
+$ ghgql
 ```
-```
-Hello, World!
-```
-
-Custom.
-
-```sh
-$ myapp --name Gopher
-```
-```
-Hello, Gopher!
-```
-
-
-## Start a new Go project
-
-<div align="center">
-
-[![Use this template](https://img.shields.io/badge/Generate-Use_this_template-2ea44f?style=for-the-badge)](https://github.com/MichaelCurrin/github-gql-go/generate)
-
-</div>
-
-For help using this project, see [Template notes](/docs/template-notes/) in the docs.
 
 
 ## Documentation
