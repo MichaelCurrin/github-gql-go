@@ -11,12 +11,18 @@ import (
 	"golang.org/x/oauth2"
 )
 
+// TokenName Name of the environment variable for storing the GitHub token.
+const TokenName = "GH_TOKEN"
+
 // Request Query the GitHub GQL API and return data.
 // TODO refactor into functions.
 func Request() {
+	token := os.Getenv(TokenName)
+	if token == "" {
+		log.Fatal("Must set token on environment variable: ", TokenName)
+	}
 	src := oauth2.StaticTokenSource(
-		// TODO: Throw errow if var not set instead of getting bad creds error.
-		&oauth2.Token{AccessToken: os.Getenv("GITHUB_TOKEN")},
+		&oauth2.Token{AccessToken: token},
 	)
 	httpClient := oauth2.NewClient(context.Background(), src)
 
