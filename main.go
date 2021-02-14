@@ -1,14 +1,13 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"time"
 
 	"github.com/urfave/cli/v2"
 
-	greetings "github.com/MichaelCurrin/github-gql-go/internal"
+	api "github.com/MichaelCurrin/github-gql-go/internal"
 )
 
 const (
@@ -17,33 +16,16 @@ const (
 )
 
 func main() {
-	var name string
-
 	app := &cli.App{
-		Name:        "My App",
-		HelpName:    "myapp",
-		Usage:       "Display a friendly greeting",
+		Name:        "GitHub GQL Tool",
+		HelpName:    "ghgql",
+		Usage:       "Provide a GQL query to read and a JSON path to write to. Required env variable: GH_TOKEN",
+		UsageText:   "ghgql [-h] [-v]",
 		Version:     VERSION,
-		Description: "A Hello World greeting app to get you started with a new Go project",
-
-		Commands: []*cli.Command{},
-		Flags: []cli.Flag{
-			&cli.StringFlag{
-				Name:        "name",
-				Value:       "World",
-				Usage:       "Name of a person to greet",
-				Destination: &name,
-			},
-		},
+		Description: "Query the GitHub GQL API and return data as JSON",
 
 		Action: func(c *cli.Context) error {
-			greeting, err := greetings.Hello(name)
-
-			if err != nil {
-				log.Fatal(err)
-			}
-
-			fmt.Println(greeting)
+			api.Request()
 
 			return nil
 		},
