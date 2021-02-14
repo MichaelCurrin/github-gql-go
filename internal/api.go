@@ -23,16 +23,19 @@ func oAuth() *http.Client {
 	src := oauth2.StaticTokenSource(
 		&oauth2.Token{AccessToken: token},
 	)
-	httpClient := oauth2.NewClient(context.Background(), src)
 
-	return httpClient
+	return oauth2.NewClient(context.Background(), src)
 }
 
-// Request Query the GitHub GQL API and return data.
-// TODO refactor into functions.
-func Request() {
+func apiClient() *githubv4.Client {
 	httpClient := oAuth()
-	client := githubv4.NewClient(httpClient)
+
+	return githubv4.NewClient(httpClient)
+}
+
+// Request will query the GitHub GQL API and return data.
+func Request() {
+	client := apiClient()
 
 	var q struct {
 		Viewer struct {
