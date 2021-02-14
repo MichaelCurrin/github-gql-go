@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 	"time"
 
@@ -14,9 +15,7 @@ import (
 // TokenName Name of the environment variable for storing the GitHub token.
 const TokenName = "GH_TOKEN"
 
-// Request Query the GitHub GQL API and return data.
-// TODO refactor into functions.
-func Request() {
+func oAuth() *http.Client {
 	token := os.Getenv(TokenName)
 	if token == "" {
 		log.Fatal("Must set token on environment variable: ", TokenName)
@@ -26,6 +25,13 @@ func Request() {
 	)
 	httpClient := oauth2.NewClient(context.Background(), src)
 
+	return httpClient
+}
+
+// Request Query the GitHub GQL API and return data.
+// TODO refactor into functions.
+func Request() {
+	httpClient := oAuth()
 	client := githubv4.NewClient(httpClient)
 
 	var q struct {
