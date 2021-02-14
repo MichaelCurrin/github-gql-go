@@ -13,6 +13,7 @@
 ## Sample usage
 
 Create your GH auth token and set it on the environment.
+
 ```sh
 $ export GH_TOKEN=abcdef
 ```
@@ -27,6 +28,8 @@ Login: MichaelCurrin
 Created at: 2016-04-30 11:19:17 +0000 UTC
 Avatar URL: https://avatars.githubusercontent.com/u/18750745?s=72&u=ec21949f76c6d8f152f3d8c8f8204d86d6fceba5&v=4
 ```
+
+**The query is hardcoded as a Go object and printed but in future this could be set up in a `.gql` input file and output saved as a `.json` file.**
 
 
 ## Documentation
