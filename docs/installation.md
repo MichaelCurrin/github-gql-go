@@ -39,6 +39,3 @@ If you need to upgrade all packages to the latest:
 ```sh
 $ make upgrade
 ```
-
-
-## Configure GitHub token
