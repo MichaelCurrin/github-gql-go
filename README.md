@@ -10,6 +10,9 @@
 [![Made with Go](https://img.shields.io/github/go-mod/go-version/MichaelCurrin/github-gql-go?logo=go&logoColor=white)](https://golang.org)
 
 
+A CLI tool which wraps another Go package and that can query the [GitHub GraphQL](https://michaelcurrin.github.io/dev-resources/resources/version-control/github/graphql.html) API.
+
+
 ## Sample usage
 
 Create your GH auth token and set it on the environment.
