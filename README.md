@@ -8,9 +8,10 @@
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license)
 
 [![Made with Go](https://img.shields.io/github/go-mod/go-version/MichaelCurrin/github-gql-go?logo=go&logoColor=white)](https://golang.org)
+[![dependency - githubv4](https://img.shields.io/badge/dependency-githubv4-blue)](https://pkg.go.dev/github.com/shurcooL/githubv4)
 
 
-A CLI tool which wraps another Go package and that can query the [GitHub GraphQL](https://michaelcurrin.github.io/dev-resources/resources/version-control/github/graphql.html) API.
+A CLI tool to query the [GitHub GraphQL](https://michaelcurrin.github.io/dev-resources/resources/version-control/github/graphql.html) API by acting as a wrapper on another Go package.
 
 
 ## Sample usage
@@ -32,7 +33,13 @@ Created at: 2016-04-30 11:19:17 +0000 UTC
 Avatar URL: https://avatars.githubusercontent.com/u/18750745?s=72&u=ec21949f76c6d8f152f3d8c8f8204d86d6fceba5&v=4
 ```
 
-**The query is hardcoded as a Go object and printed but in future this could be set up in a `.gql` input file and output saved as a `.json` file.**
+
+## Limitations ⚠️
+
+- Just a short GQL query is **hardcoded** in the repo a Go object and the result printed as text. 
+- With future develpment, this could be setup as a `.gql` input file or some other fixed queries. 
+- And then output saved as a `.json` file.
+- For a more full-fledged Python example that takes GQL files and writes CSV reports for each, see [GH Reporting Tool](https://github.com/MichaelCurrin/github-reporting-py).
 
 
 ## Documentation
