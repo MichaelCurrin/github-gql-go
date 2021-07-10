@@ -47,12 +47,12 @@ func queryViewer(api *githubv4.Client) viewerDetails {
 	return viewerQuery.Viewer
 }
 
-func queryRepo(api *githubv4.Client, repoOwner string, repoName string) repoDetails {
+func queryRepo(api *githubv4.Client, owner string, repoName string) repoDetails {
 	var repoQuery struct {
 		Repository repoDetails `graphql:"repository(owner:$repositoryOwner,name:$repositoryName)"`
 	}
 	variables := map[string]interface{}{
-		"repositoryOwner": githubv4.String(repoOwner),
+		"repositoryOwner": githubv4.String(owner),
 		"repositoryName":  githubv4.String(repoName),
 	}
 
