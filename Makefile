@@ -1,9 +1,10 @@
 export GH_TOKEN
 
-OUT_DIR = build
-COMPILED := $(OUT_DIR)/ghgql
+JSON_DIR = json_dumps
+BUILD_DIR = build
+COMPILED := $(BUILD_DIR)/ghgql
 
-.PHONY: $(OUT_DIR)
+.PHONY: $(BUILD_DIR)
 
 
 default: install
@@ -37,7 +38,7 @@ run:
 		&& go run main.go
 
 run-write:
-	$(MAKE) run > export.json
+	$(MAKE) run > $(JSON_DIR)/export.json
 
 
 
