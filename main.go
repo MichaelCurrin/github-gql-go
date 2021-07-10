@@ -7,7 +7,7 @@ import (
 
 	"github.com/urfave/cli/v2"
 
-	api "github.com/MichaelCurrin/github-gql-go/internal"
+	api "github.com/MichaelCurrin/github-gql-go/internal/api"
 )
 
 const (
