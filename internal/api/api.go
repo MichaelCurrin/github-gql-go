@@ -52,8 +52,5 @@ func printAsJSON(resp interface{}) {
 func Request() {
 	api := conn.SetupAPIClient()
 	resp := viewer(api)
-
-	fmt.Fprintf(os.Stderr, "JSON data\n")
-
 	printAsJSON(resp)
 }
