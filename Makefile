@@ -29,12 +29,16 @@ fmt:
 	go fmt ./...
 
 
-run:
-	source .env \
-		&& go run main.go
-
 usage:
 	go run main.go -h
+
+run:
+	@source .env \
+		&& go run main.go
+
+run-write:
+	$(MAKE) run > export.json
+
 
 
 build:
