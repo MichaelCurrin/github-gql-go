@@ -15,6 +15,13 @@ const (
 	VERSION = "v0.1.0"
 )
 
+// run does the overall app logic.
+func run(c *cli.Context) error {
+	api.Request()
+
+	return nil
+}
+
 func main() {
 	app := &cli.App{
 		Name:        "GitHub GQL Tool",
@@ -24,11 +31,7 @@ func main() {
 		Version:     VERSION,
 		Description: "Query the GitHub GQL API and return data as JSON",
 
-		Action: func(c *cli.Context) error {
-			api.Request()
-
-			return nil
-		},
+		Action: run,
 
 		Compiled: time.Time{},
 		Authors: []*cli.Author{
