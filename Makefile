@@ -21,6 +21,9 @@ install:
 upgrade:
 	go get -u ./...
 
+tidy:
+	go mod tidy
+
 
 fmt:
 	go fmt ./...
