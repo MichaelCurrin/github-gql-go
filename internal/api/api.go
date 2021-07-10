@@ -13,16 +13,21 @@ import (
 	conn "github.com/MichaelCurrin/github-gql-go/internal/conn"
 )
 
-type Viewer struct {
+type ViewerDetails struct {
 	Login     string
 	CreatedAt time.Time
 	AvatarURL string `graphql:"avatarUrl(size: 72)"`
 }
 
+type repoDetails struct {
+	Name string
+	URL  githubv4.URI
+}
+
 // viewer gets metadata about the authenticated GitHub account.
-func viewer(api *githubv4.Client) Viewer {
+func viewer(api *githubv4.Client) ViewerDetails {
 	var viewerQuery struct {
-		Viewer Viewer
+		Viewer ViewerDetails
 	}
 
 	err := api.Query(context.Background(), &viewerQuery, nil)
@@ -39,6 +44,23 @@ func viewer(api *githubv4.Client) Viewer {
 	return viewerQuery.Viewer
 }
 
+func repo(api *githubv4.Client, repoOwner string, repoName string) repoDetails {
+	var repoQuery struct {
+		Repository repoDetails `graphql:"repository(owner:$repositoryOwner,name:$repositoryName)"`
+	}
+	variables := map[string]interface{}{
+		"repositoryOwner": githubv4.String(repoOwner),
+		"repositoryName":  githubv4.String(repoName),
+	}
+
+	err := api.Query(context.Background(), &repoQuery, variables)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	return repoQuery.Repository
+}
+
 // printJSON prints v as JSON encoded with indent to stdout. It panics on any error.
 func printJSON(v interface{}) {
 	w := json.NewEncoder(os.Stdout)
@@ -53,6 +75,10 @@ func printJSON(v interface{}) {
 // Request will query the GitHub GQL API and return data.
 func Request() {
 	api := conn.SetupAPIClient()
-	resp := viewer(api)
-	printJSON(resp)
+
+	vResp := viewer(api)
+	printJSON(vResp)
+
+	rResp := repo(api, "MichaelCurrin", "github-gql-go")
+	printJSON(rResp)
 }
