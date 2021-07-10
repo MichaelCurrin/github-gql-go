@@ -2,6 +2,7 @@ package api
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -40,7 +41,7 @@ func setupAPIClient() *githubv4.Client {
 }
 
 // viewer gets metadata about the authenticated GitHub account.
-func viewer(api *githubv4.Client) {
+func viewer(api *githubv4.Client) Viewer {
 	var viewerQuery struct {
 		Viewer Viewer
 	}
@@ -50,13 +51,30 @@ func viewer(api *githubv4.Client) {
 		log.Fatalln(err)
 	}
 
-	fmt.Println("Login:", viewerQuery.Viewer.Login)
-	fmt.Println("Created at:", viewerQuery.Viewer.CreatedAt)
-	fmt.Println("Avatar URL:", viewerQuery.Viewer.AvatarURL)
+	fmt.Fprintln(os.Stderr, "Pretty view:")
+	fmt.Fprintln(os.Stderr, "Login:", viewerQuery.Viewer.Login)
+	fmt.Fprintln(os.Stderr, "Created at:", viewerQuery.Viewer.CreatedAt)
+	fmt.Fprintln(os.Stderr, "Avatar URL:", viewerQuery.Viewer.AvatarURL)
+	fmt.Fprint(os.Stderr, "\n\n")
+
+	return viewerQuery.Viewer
+}
+
+// process will accept generic response, convert to JSON and print it.
+func process(resp interface{}) {
+	json, err := json.Marshal(resp)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	fmt.Printf("%s\n", string(json))
 }
 
 // Request will query the GitHub GQL API and return data.
 func Request() {
 	api := setupAPIClient()
-	viewer(api)
+	resp := viewer(api)
+
+	fmt.Fprintf(os.Stderr, "JSON data\n")
+
+	process(resp)
 }
