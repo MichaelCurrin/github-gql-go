@@ -20,8 +20,11 @@ type viewerDetails struct {
 }
 
 type repoDetails struct {
-	Name string
-	URL  githubv4.URI
+	Name        string
+	Description string
+	CreatedAt   time.Time
+	UpdatedAt   time.Time
+	URL         githubv4.URI
 }
 
 // queryViewer gets metadata about the authenticated GitHub account.
