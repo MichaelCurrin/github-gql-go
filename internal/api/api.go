@@ -13,7 +13,7 @@ import (
 	conn "github.com/MichaelCurrin/github-gql-go/internal/conn"
 )
 
-type ViewerDetails struct {
+type viewerDetails struct {
 	Login     string
 	CreatedAt time.Time
 	AvatarURL string `graphql:"avatarUrl(size: 72)"`
@@ -24,10 +24,10 @@ type repoDetails struct {
 	URL  githubv4.URI
 }
 
-// viewer gets metadata about the authenticated GitHub account.
-func viewer(api *githubv4.Client) ViewerDetails {
+// queryViewer gets metadata about the authenticated GitHub account.
+func queryViewer(api *githubv4.Client) viewerDetails {
 	var viewerQuery struct {
-		Viewer ViewerDetails
+		Viewer viewerDetails
 	}
 
 	err := api.Query(context.Background(), &viewerQuery, nil)
@@ -44,7 +44,7 @@ func viewer(api *githubv4.Client) ViewerDetails {
 	return viewerQuery.Viewer
 }
 
-func repo(api *githubv4.Client, repoOwner string, repoName string) repoDetails {
+func queryRepo(api *githubv4.Client, repoOwner string, repoName string) repoDetails {
 	var repoQuery struct {
 		Repository repoDetails `graphql:"repository(owner:$repositoryOwner,name:$repositoryName)"`
 	}
@@ -76,9 +76,9 @@ func printJSON(v interface{}) {
 func Request() {
 	api := conn.SetupAPIClient()
 
-	vResp := viewer(api)
+	vResp := queryViewer(api)
 	printJSON(vResp)
 
-	rResp := repo(api, "MichaelCurrin", "github-gql-go")
+	rResp := queryRepo(api, "MichaelCurrin", "github-gql-go")
 	printJSON(rResp)
 }
