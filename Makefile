@@ -37,6 +37,7 @@ run:
 	@source .env \
 		&& go run main.go
 
+# TODO: Toggle type based on args to avoid mixing in one JSON file.
 run-write:
 	$(MAKE) run > $(JSON_DIR)/export.json
 
