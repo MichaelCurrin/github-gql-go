@@ -30,7 +30,8 @@ fmt:
 
 
 run:
-	source .env && go run main.go
+	source .env \
+		&& go run main.go
 
 usage:
 	go run main.go -h
