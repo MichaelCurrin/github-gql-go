@@ -39,18 +39,20 @@ func viewer(api *githubv4.Client) Viewer {
 	return viewerQuery.Viewer
 }
 
-// printAsJSON will accept generic response, convert to JSON and print it.
-func printAsJSON(resp interface{}) {
-	json, err := json.Marshal(resp)
+// printJSON prints v as JSON encoded with indent to stdout. It panics on any error.
+func printJSON(v interface{}) {
+	w := json.NewEncoder(os.Stdout)
+	w.SetIndent("", "\t")
+
+	err := w.Encode(v)
 	if err != nil {
-		log.Fatalln(err)
+		panic(err)
 	}
-	fmt.Printf("%s\n", string(json))
 }
 
 // Request will query the GitHub GQL API and return data.
 func Request() {
 	api := conn.SetupAPIClient()
 	resp := viewer(api)
-	printAsJSON(resp)
+	printJSON(resp)
 }
