@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths-ignore:
       - "docs/**"
+
   pull_request:
     branches: [main]
     paths-ignore:
@@ -18,10 +19,10 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
 
-      - name: Setup Go ⚙️
+      - name: Set up Go ⚙️
         uses: actions/setup-go@v2
         with:
-          go-version: 1.15
+          go-version: 1.16
 
       - name: Build 🏗️
         run: make build
