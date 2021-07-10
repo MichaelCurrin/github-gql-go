@@ -36,9 +36,11 @@ Avatar URL: https://avatars.githubusercontent.com/u/18750745?s=72&u=ec21949f76c6
 
 ## Limitations ⚠️
 
-- Just a short GQL query is **hardcoded** in the repo a Go object and the result printed as text. 
-- With future develpment, this could be setup as a `.gql` input file or some other fixed queries. 
-- And then output saved as a `.json` file.
+- Just a short GQL query is **hardcoded** in the repo a Go object and the result printed as text.
+- The aim for future development:
+    - Use `.gql` input file given by the user, or choose from queries known to the app.
+    - And then output saved as a `.json` file.
+- The idea is to make a tool that is easy to use for developers who are not familiar with Go and want a binary that they can use in their project pipeline to handle GitHub data.s
 - For a more full-fledged Python example that takes GQL files and writes CSV reports for each, see [GH Reporting Tool](https://github.com/MichaelCurrin/github-reporting-py).
 
 
