@@ -15,6 +15,14 @@ import (
 // TokenName Name of the environment variable for storing the GitHub token.
 const TokenName = "GH_TOKEN"
 
+var viewerQuery struct {
+	Viewer struct {
+		Login     string
+		CreatedAt time.Time
+		AvatarURL string `graphql:"avatarUrl(size: 72)"`
+	}
+}
+
 func setupHTTPClient(token string) *http.Client {
 	src := oauth2.StaticTokenSource(
 		&oauth2.Token{AccessToken: token},
@@ -37,20 +45,12 @@ func setupAPIClient() *githubv4.Client {
 func Request() {
 	api := setupAPIClient()
 
-	var q struct {
-		Viewer struct {
-			Login     string
-			CreatedAt time.Time
-			AvatarURL string `graphql:"avatarUrl(size: 72)"`
-		}
-	}
-
-	err := api.Query(context.Background(), &q, nil)
+	err := api.Query(context.Background(), &viewerQuery, nil)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	fmt.Println("Login:", q.Viewer.Login)
-	fmt.Println("Created at:", q.Viewer.CreatedAt)
-	fmt.Println("Avatar URL:", q.Viewer.AvatarURL)
+	fmt.Println("Login:", viewerQuery.Viewer.Login)
+	fmt.Println("Created at:", viewerQuery.Viewer.CreatedAt)
+	fmt.Println("Avatar URL:", viewerQuery.Viewer.AvatarURL)
 }
