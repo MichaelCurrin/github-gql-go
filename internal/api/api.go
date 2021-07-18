@@ -64,6 +64,29 @@ func queryRepo(api *githubv4.Client, owner string, repoName string) repoDetails 
 	return repoQuery.Repository
 }
 
+func queryRepos(api *githubv4.Client, owner string) {
+	var query string = `
+		query {
+			viewer {
+				login
+				createdAt
+			}
+		}
+	`
+	fmt.Println(query)
+
+	err := api.Query(context.Background(), &query, nil)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	fmt.Println("Repositories:")
+	fmt.Println(query)
+	// for _, repo := range query.RepositoriesCollection {
+	// 	fmt.Println(repo.Name)
+	// }
+}
+
 // printJSON prints v as JSON encoded with indent to stdout. It panics on any error.
 func printJSON(v interface{}) {
 	w := json.NewEncoder(os.Stdout)
@@ -79,6 +102,9 @@ func printJSON(v interface{}) {
 func Request() {
 	api := conn.SetupAPIClient()
 
+	queryRepos(api, "MichaelCurrin")
+
+	return
 	vResp := queryViewer(api)
 	printJSON(vResp)
 
