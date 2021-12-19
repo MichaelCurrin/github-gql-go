@@ -32,14 +32,22 @@ Avatar URL: https://avatars.githubusercontent.com/u/18750745?s=72&u=ec21949f76c6
 ```
 
 
+## Purpose
+
+The intention for this project is:
+
+- Be easy to use for developers who are not familiar with Go.
+- Produce an binary executable for downloading (without needing Node or Python installed).
+- Allow use interactively in the CLI or in project pipeline to handle (such as to download GitHub data as JSON data and use it to make a site).
+
+
 ## Limitations ⚠️
 
-- Just a short GQL query is **hardcoded** in the repo a Go object and the result printed as text.
+- This project is a proof-of-concept for extending. It only has short GQL query is **hardcoded** in this repo as a Go object and the result printed as text.
 - The aim for future development:
-    - Use `.gql` input file given by the user, or choose from queries known to the app.
+    - Use a selection of `.gql` input file given by the user, or choose from queries known to the app.
     - And then output saved as a `.json` file.
-- The idea is to make a tool that is easy to use for developers who are not familiar with Go and want a binary that they can use in their project pipeline to handle GitHub data.s
-- For a more full-fledged Python example that takes GQL files and writes CSV reports for each, see [GH Reporting Tool](https://github.com/MichaelCurrin/github-reporting-py).
+- For a more full-fledged Python project that takes GQL files and writes CSV reports for each, see my [GH Reporting Tool](https://github.com/MichaelCurrin/github-reporting-py).
 
 
 ## Documentation
