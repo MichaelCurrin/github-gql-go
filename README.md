@@ -24,10 +24,8 @@ $ export GH_TOKEN=abcdef
 
 Run the CLI app to do a query and print results.
 
-```sh
+```console
 $ ghgql
-```
-```
 Login: MichaelCurrin
 Created at: 2016-04-30 11:19:17 +0000 UTC
 Avatar URL: https://avatars.githubusercontent.com/u/18750745?s=72&u=ec21949f76c6d8f152f3d8c8f8204d86d6fceba5&v=4
