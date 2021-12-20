@@ -43,11 +43,11 @@ The intention for this project is:
 
 ## Limitations ⚠️
 
-- This project is a proof-of-concept for extending. It only has short GQL query is **hardcoded** in this repo as a Go object and the result printed as text.
-- The aim for future development:
+- This project only uses one GQL query which is hardcoded in this repo as a Go object. The result printed as text.
+- Aims for future development:
     - Use a selection of `.gql` input file given by the user, or choose from queries known to the app.
-    - And then output saved as a `.json` file.
-- For a more full-fledged Python project that takes GQL files and writes CSV reports for each, see my [GH Reporting Tool](https://github.com/MichaelCurrin/github-reporting-py).
+    - Save output as a JSON or CSV file.
+- For a more full-fledged project that has a variety GQL files and writes CSV reports for each one, see my [GH Reporting Tool](https://github.com/MichaelCurrin/github-reporting-py) in Python.
 
 
 ## Documentation
@@ -55,7 +55,7 @@ The intention for this project is:
 
 <div align="center">
 
-[![View - Documentation](https://img.shields.io/badge/View-Documentation-blue?style=for-the-badge)](/docs/)
+[![Documentation](https://img.shields.io/badge/View-Documentation-blue?style=for-the-badge)](/docs/)
 
 </div>
 
