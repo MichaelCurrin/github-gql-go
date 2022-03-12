@@ -43,9 +43,9 @@ The intention for this project is:
 
 ## Limitations ⚠️
 
-- This project only uses one GQL query. This is hardcoded in this repo as a Go object. The result gets printed as text.
+- This project only uses fixed GQL queries. There is a request for the current user and a request for this repo. The results get printed as text.
 - Aims for future development:
-    - Use a selection of `.gql` input file given by the user, or choose from queries known to the app.
+    - Use a selection of `.gql` input file given by the user, or choose from queries known to the app. Currently using a Go object, which might be more practical anyway for types.
     - Save output as a JSON or CSV file.
 - For a more full-fledged project that has a variety GQL files and writes CSV reports for each one, see my [GH Reporting Tool](https://github.com/MichaelCurrin/github-reporting-py) in Python.
 
