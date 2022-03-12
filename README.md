@@ -43,7 +43,7 @@ The intention for this project is:
 
 ## Limitations ⚠️
 
-- This project only uses one GQL query which is hardcoded in this repo as a Go object. The result printed as text.
+- This project only uses one GQL query. This is hardcoded in this repo as a Go object. The result gets printed as text.
 - Aims for future development:
     - Use a selection of `.gql` input file given by the user, or choose from queries known to the app.
     - Save output as a JSON or CSV file.
