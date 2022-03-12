@@ -13,7 +13,7 @@ import (
 	conn "github.com/MichaelCurrin/github-gql-go/internal/conn"
 )
 
-type viewerDetails struct {
+type profileDetails struct {
 	Login     string
 	CreatedAt time.Time
 	AvatarURL string `graphql:"avatarUrl(size: 72)"`
@@ -28,9 +28,9 @@ type repoDetails struct {
 }
 
 // queryViewer gets metadata about the authenticated GitHub account.
-func queryViewer(api *githubv4.Client) viewerDetails {
+func queryViewer(api *githubv4.Client) profileDetails {
 	var viewerQuery struct {
-		Viewer viewerDetails
+		Viewer profileDetails
 	}
 
 	err := api.Query(context.Background(), &viewerQuery, nil)
@@ -47,9 +47,10 @@ func queryViewer(api *githubv4.Client) viewerDetails {
 	return viewerQuery.Viewer
 }
 
+// queryRepo gets info about a given repo.
 func queryRepo(api *githubv4.Client, owner string, repoName string) repoDetails {
 	var repoQuery struct {
-		Repository repoDetails `graphql:"repository(owner:$repositoryOwner,name:$repositoryName)"`
+		Repository repoDetails `graphql:"repository(owner:$repositoryOwner, name:$repositoryName)"`
 	}
 	variables := map[string]interface{}{
 		"repositoryOwner": githubv4.String(owner),
@@ -64,7 +65,7 @@ func queryRepo(api *githubv4.Client, owner string, repoName string) repoDetails 
 	return repoQuery.Repository
 }
 
-// printJSON prints v as JSON encoded with indent to stdout. It panics on any error.
+// printJSON pretty prints given value as JSON. It panics on an error.
 func printJSON(v interface{}) {
 	w := json.NewEncoder(os.Stdout)
 	w.SetIndent("", "\t")
@@ -75,13 +76,13 @@ func printJSON(v interface{}) {
 	}
 }
 
-// Request will query the GitHub GQL API and return data.
+// Request will query the GitHub GQL API and handle the response data.
 func Request() {
 	api := conn.SetupAPIClient()
 
-	vResp := queryViewer(api)
-	printJSON(vResp)
+	profileResp := queryViewer(api)
+	printJSON(profileResp)
 
-	rResp := queryRepo(api, "MichaelCurrin", "github-gql-go")
-	printJSON(rResp)
+	repoResp := queryRepo(api, "MichaelCurrin", "github-gql-go")
+	printJSON(repoResp)
 }
