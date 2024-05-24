@@ -1,8 +1,11 @@
-export GH_TOKEN
+SHELL = /bin/bash
 
 JSON_DIR = json_dumps
 BUILD_DIR = build
 COMPILED := $(BUILD_DIR)/ghgql
+
+export GH_TOKEN
+
 
 .PHONY: $(BUILD_DIR)
 
@@ -33,7 +36,13 @@ fmt:
 usage:
 	go run main.go -h
 
-run:
+
+.check-env:
+	@if [ ! -f .env ]; then \
+		echo "Error: `.env` file not found. Please create it."; \
+	fi
+
+run: .check-env
 	@source .env \
 		&& go run main.go
 
@@ -45,7 +54,6 @@ run-write:
 
 build:
 	go build -v -o $(COMPILED) main.go
-
 
 global:
 	go install
