@@ -12,7 +12,7 @@ import (
 
 const (
 	// VERSION is the release number.
-	VERSION = "v0.1.0"
+	VERSION = "v0.2.0"
 )
 
 // run executes the main logic of the application.
