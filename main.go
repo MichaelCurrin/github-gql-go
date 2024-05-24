@@ -15,7 +15,7 @@ const (
 	VERSION = "v0.1.0"
 )
 
-// run does the overall app logic.
+// run executes the main logic of the application.
 func run(c *cli.Context) error {
 	api.Request()
 
@@ -42,8 +42,7 @@ func main() {
 		},
 	}
 
-	err := app.Run(os.Args)
-	if err != nil {
+	if err := app.Run(os.Args); err != nil {
 		log.Fatal(err)
 	}
 }
