@@ -1,6 +1,6 @@
 module github.com/MichaelCurrin/github-gql-go
 
-go 1.23
+go 1.23.0
 
 require (
 	github.com/shurcooL/githubv4 v0.0.0-20240429030203-be2daab69064
